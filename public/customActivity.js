@@ -6,9 +6,9 @@ define(["postmonger"], function(Postmonger) {
     let lastStepEnabled = false;
     let steps = [
         // initialize to the same value as what's set in config.json for consistency
-        { label: "Cấu Hình Gửi Tin Nhắn", key: "step1" },
-        { label: "Bước 2", key: "step2", active: false },
-        { label: "Bước 3", key: "step3", active: false }
+        { "label": "Cấu Hình Tin Nhắn", "key": "step1" },
+        { "label": "Gửi Tin Nhắn", "key": "step2" },
+        { "label": "Bước 3", "key": "step3", "active": false }
     ];
     let currentStep = steps[0];
 

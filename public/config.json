@@ -67,8 +67,8 @@
         }
     },
     "wizardSteps": [
-        { "label": "Cấu Hình Gửi Tin Nhắn", "key": "step1" },
-        { "label": "Bước 2", "key": "step2", "active": false },
+        { "label": "Cấu Hình Tin Nhắn", "key": "step1" },
+        { "label": "Gửi Tin Nhắn", "key": "step2" },
         { "label": "Bước 3", "key": "step3", "active": false }
     ],
     "userInterfaces": {
