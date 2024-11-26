@@ -157,18 +157,29 @@ define(["postmonger"], function(Postmonger) {
 
     //Save Sequence
     function onClickedNext() {
+        console.log("*** Debug: Click Next Step ------------------------------------------");
+        console.log(currentStep);
+        console.log("### End: Current Step Data ------------------------------------------");
         if (currentStep.key === "step3") {
+            console.log("*** Debug: Next Step save data ------------------------------------------");
             save();
         } else {
+            console.log("*** Debug: Next Step move next ------------------------------------------");
             connection.trigger("nextStep");
         }
     }
 
     function onClickedBack() {
+        console.log("*** Debug: Click Previous Step ------------------------------------------");
+        console.log(currentStep);
+        console.log("### End: Current Step Data ------------------------------------------");
         connection.trigger("prevStep");
     }
 
     function onGotoStep(step) {
+        console.log("*** Debug: On Goto Step ------------------------------------------");
+        console.log(step);
+        console.log("### End: Goto Step ------------------------------------------");
         showStep(step);
         connection.trigger("ready");
     }
@@ -256,7 +267,7 @@ define(["postmonger"], function(Postmonger) {
         let inArguments = payload.arguments.execute.inArguments;
 
         // get the option that the user selected and save it to
-        console.log("*** View: Final inArguments ------------------------------------------");
+        console.log("*** Saving: Final inArguments ------------------------------------------");
         console.log(inArguments);
         console.log("### End: Final inArguments ------------------------------------------");
 
