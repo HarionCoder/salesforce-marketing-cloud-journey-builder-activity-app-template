@@ -133,13 +133,15 @@ define(["postmonger"], function(Postmonger) {
 
         // If there is no message selected, disable the next button
         if (!parameters) {
+            console.log("~~~ Debug: No Parameter ------------------------------------------");
             showStep(null, 1);
             connection.trigger("updateButton", { button: "next", enabled: true });
             // If there is a message, skip to the summary step
         } else {
-            // $("#msg-txt").val(message);
-            // $("#message").html(message);
-            //showStep(null, 3);
+            console.log("*** Debug: Show Parameters ------------------------------------------");
+            console.log(parameters);
+            console.log("### End: Parameters Data ------------------------------------------");
+            showStep(null, 3);
         }
     }
 
@@ -235,18 +237,18 @@ define(["postmonger"], function(Postmonger) {
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
-        payload.name = message; //text message to send to telegram
+        payload.name = 'Telegram Activity'; //text message to send to telegram
         payload["arguments"].execute.inArguments = [{ parameter: content }];
         //payload["arguments"].execute.inArguments.push({"text": value})
 
         payload["arguments"].execute.inArguments = [{
-                'telegramId': "@VCB_poc"
+                'telegramChannel': "@VCB_poc"
             },
             {
                 'emailAddress': '{{InteractionDefaults.Email}}'
             },
             {
-                'telegramId': '{{InteractionDefaults.Email}}'
+                'telegramId': '{{InteractionDefaults.TelegramId}}'
             },
             {
                 'telegramMessage': message

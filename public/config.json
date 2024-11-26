@@ -30,6 +30,9 @@
                 },
                 {
                     "telegramId": "{{Contact.Default.TelegramId}}"
+                },
+                {
+                    "telegramChannel": "{{Contact.Default.telegramChannel}}"
                 }
             ],
             "outArguments": [
