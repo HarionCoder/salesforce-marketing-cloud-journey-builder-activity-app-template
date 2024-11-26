@@ -123,26 +123,29 @@ define(["postmonger"], function(Postmonger) {
         console.log(inArguments);
         console.log("### End: inArguments Data ------------------------------------------");
 
-        $.each(inArguments, function(index, inArgument) {
-            $.each(inArgument, function(key, val) {
-                if (key === "telegramMessage") {
-                    parameters = val;
-                }
-            });
-        });
+        showStep(null, 1);
+        connection.trigger("updateButton", { button: "next", enabled: true });
+
+        // $.each(inArguments, function(index, inArgument) {
+        //     $.each(inArgument, function(key, val) {
+        //         if (key === "telegramMessage") {
+        //             parameters = val;
+        //         }
+        //     });
+        // });
 
         // If there is no message selected, disable the next button
-        if (!parameters) {
-            console.log("~~~ Debug: No Parameter ------------------------------------------");
-            showStep(null, 1);
-            connection.trigger("updateButton", { button: "next", enabled: true });
-            // If there is a message, skip to the summary step
-        } else {
-            console.log("*** Debug: Show Parameters ------------------------------------------");
-            console.log(parameters);
-            console.log("### End: Parameters Data ------------------------------------------");
-            showStep(null, 3);
-        }
+        // if (!parameters) {
+        //     console.log("~~~ Debug: No Parameter ------------------------------------------");
+        //     showStep(null, 1);
+        //     connection.trigger("updateButton", { button: "next", enabled: true });
+        //     // If there is a message, skip to the summary step
+        // } else {
+        //     console.log("*** Debug: Show Parameters ------------------------------------------");
+        //     console.log(parameters);
+        //     console.log("### End: Parameters Data ------------------------------------------");
+        //     showStep(null, 3);
+        // }
     }
 
     function onGetTokens(tokens) {
@@ -165,15 +168,7 @@ define(["postmonger"], function(Postmonger) {
             save();
         } else {
             console.log("*** Debug: Next Step move next ------------------------------------------");
-            console.log(currentStep);
-            console.log("*** Debug: Show Next Step ------------------------------------------");
             connection.trigger("nextStep");
-            $(".step").hide();
-            if (currentStep.key == "step1") {
-                showStep(null, 2);
-            } else if (currentStep.key == "step2") {
-                showStep(null, 3);
-            }
         }
     }
 
@@ -182,12 +177,6 @@ define(["postmonger"], function(Postmonger) {
         console.log(currentStep);
         console.log("### End: Current Step Data ------------------------------------------");
         connection.trigger("prevStep");
-        $(".step").hide();
-        if (currentStep.key == "step2") {
-            showStep(null, 1);
-        } else if (currentStep.key == "step3") {
-            showStep(null, 2);
-        }
     }
 
     function onGotoStep(step) {
