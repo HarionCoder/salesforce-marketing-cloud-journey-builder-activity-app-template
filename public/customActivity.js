@@ -34,27 +34,67 @@ define(["postmonger"], function(Postmonger) {
         $("#msg-frm .message__text").html(content.message);
         $("#prv-img").attr('src', content.photo);
 
-        $("#save-content").click(() => { save(); });
-        $("#msg-txt").on('mouseover', () => {
-            const msg = $("#msg-txt").val();
-            if (msg != '') {
-                const url = $("#img-url").val();
-                $("#msg-frm .message__text").html(msg);
-                $("#save-content").removeAttr("disabled");
-                $("#send-request").removeAttr("disabled");
-                if (url != '') {
-                    $("#prv-img").attr('src', content.photo);
-                } else {
-                    $("#prv-img").attr('src', '');
-                }
-            } else {
-                $("#msg-frm .message__text").html('');
-                $("#prv-img").attr('src', '');
-                $("#save-content").attr("disabled", "disabled");
-                $("#send-request").attr("disabled", "disabled");
-            }
-        })
     }
+
+    $("#save-content").click(() => { save(); });
+
+    $("#msg-txt").on('mouseout', (e) => {
+        const msg = $("#msg-txt").val();
+        if (msg != '') {
+            const now = new Date(Date.now());
+            let current_time = now.getHours() + ":" + now.getMinutes();
+            $('#txt-cnt .message__time').html(current_time);
+            const url = $("#img-url").val();
+            $("#msg-frm .message__text").html(msg);
+            $("#save-content").removeAttr("disabled");
+            $("#send-request").removeAttr("disabled");
+            if (url != '') {
+                $("#prv-img").attr('src', content.photo);
+            } else {
+                $("#prv-img").attr('src', '');
+            }
+        } else {
+            $("#msg-frm .message__text").html('');
+            $("#prv-img").attr('src', '');
+            $("#save-content").attr("disabled", "disabled");
+            $("#send-request").attr("disabled", "disabled");
+        }
+    })
+
+    const call = (data) => {
+        const url = '';
+        // if (content.message !== '') {
+        //     let met = content.method || 'GET';
+        //     let api = `${url}${content.command}`;
+        //     let dat = {
+        //         'chat_id': channel,
+        //         'text': content.message
+        //     };
+
+        //     if (content.photo !== '') {
+        //         dat.photo = content.photo;
+        //     }
+        //     console.log(api, dat);
+        //     $.ajax({
+        //         url: api,
+        //         data: dat,
+        //         method: met,
+        //         dataType: 'json',
+        //         success: (res) => {
+        //             console.log(res);
+        //         }
+        //     });
+        // }
+    }
+
+
+    $('#send-request').click((e) => {
+        console.log("~~~ Trigger: Call API to send Data ------------------------------------------");
+        console.log("*** View: Payload will Sent ------------------------------------------");
+        console.log(payload);
+        console.log("### End: Payload will Sent ------------------------------------------");
+        call(payload);
+    });
 
     function initialize(data) {
 
@@ -80,7 +120,7 @@ define(["postmonger"], function(Postmonger) {
         let inArguments = hasInArguments ? payload["arguments"].execute.inArguments : {};
 
         console.log("*** View: inArguments Data ------------------------------------------");
-        console.log(payload);
+        console.log(inArguments);
         console.log("### End: inArguments Data ------------------------------------------");
 
         $.each(inArguments, function(index, inArgument) {
