@@ -29,7 +29,13 @@
                     "emailAddress": "{{InteractionDefaults.Email}}"
                 },
                 {
-                    "telegramId": "{{Contact.Default.telegramId}}"
+                    "telegramId": "{{Contact.Default.TelegramId}}"
+                },
+                {
+                    "registeredDate": "{{Contact.Default.RegisteredDate}}"
+                },
+                {
+                    "fullName": "{{Contact.Default.FullName}}"
                 },
                 {
                     "telegramChannel": "{{Contact.Default.telegramChannel}}"
@@ -38,7 +44,7 @@
             "outArguments": [
 
             ],
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/execute",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
             "verb": "POST",
             "useJwt": false,
             "timeout": 10000
@@ -46,22 +52,22 @@
     },
     "configurationArguments": {
         "save": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/save",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/save",
             "verb": "POST",
             "useJwt": false
         },
         "publish": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/publish",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/publish",
             "verb": "POST",
             "useJwt": false
         },
         "stop": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/stop",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/stop",
             "verb": "POST",
             "useJwt": false
         },
         "validate": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/validate",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/validate",
             "verb": "POST",
             "useJwt": false
         }
