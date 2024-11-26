@@ -20,14 +20,18 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "customMessage": "{{Interaction.customMessage}}"
-              },
-              {
-                "emailAddress": "{{InteractionDefaults.Email}}"
-              },
-              {
-                "phoneNumber": "{{Contact.Default.PhoneNumber}}"
-              }],
+                    "telegramMessage": "{{Interaction.telegramMessage}}"
+                },
+                {
+                    "imageURL": "{{Interaction.imageURL}}"
+                },
+                {
+                    "emailAddress": "{{InteractionDefaults.Email}}"
+                },
+                {
+                    "telegramId": "{{Contact.Default.TelegramId}}"
+                }
+            ],
             "outArguments": [
 
             ],

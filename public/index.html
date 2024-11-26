@@ -6,47 +6,15 @@
     <title>Telegram Journey Builder Activity</title>
     <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="js/require.js"></script>
-    <script src="js/json-viewer/jquery.json-viewer.js"></script>
-    <link href="js/json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet">
     <link href="css/style.css" type="text/css" rel="stylesheet">
 
     <script type="text/javascript">
-        /* $(function() {
-                                        function renderJson() {
-                                            console.log('OK')
-                                            try {
-                                                var input = eval('(' + $('#configuration').val() + ')');
-                                            } catch (error) {
-                                                return alert("Cannot eval JSON: " + error);
-                                            }
-                                            var options = {
-                                                collapsed: $('#collapsed').is(':checked'),
-                                                rootCollapsable: $('#root-collapsable').is(':checked'),
-                                                withQuotes: $('#with-quotes').is(':checked'),
-                                                withLinks: $('#with-links').is(':checked')
-                                            };
-                                            $('#json-renderer').jsonViewer(input, options);
-                                        }
-                                        // Generate on click
-                                        $('#btn-json-viewer').click(renderJson);
-
-                                        // Generate on option change
-                                        $('p.options input[type=checkbox]').click(renderJson);
-
-                                        // Display JSON sample on page load
-                                        // renderJson();
-                                        }); */
-
         (function() {
-
-            let end_point = "https://api.telegram.org/bot8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo/";
-
+            let end_point = "https://salesforce-marketing-cloud-journey.onrender.com/";
             var config = {
                 baseUrl: "",
             };
-
             var dependencies = ["customActivity"];
-
             require(config, dependencies);
         })();
     </script>
@@ -60,7 +28,7 @@
 <body>
     <div id="step1" class="step">
         <h1>Telegram Activity App Configuration</h1>
-        <form id="controller">
+        <div id="controller">
             <div class="input-box">
                 <input type="text" name="message_txt" id="msg-txt" class="content message" required="true" placeholder="" />
                 <label>Message</label>
@@ -72,62 +40,39 @@
             <div class="btn-bar">
                 <input type="button" disabled="disabled" id="send-request" class="custom-cursor-on-hover" value="Send Message" />
             </div>
-            <div id="preview-frame" class="hidden">
-                <section class="chat__body">
-                    <div class="messages">
-                        <div class="chat__loader">
-                          <div class="spinner"></div>
+        </div>
+    </div>
+    <div id="step2" class="step">
+        <h1>Config contact of the Receiver</h1>
+        <div id="config-frame" class="hidden">
+
+        </div>
+    </div>
+    <div id="step3" class="step">
+        <h1>Preview content of Message</h1>
+        <div id="preview-frame" class="hidden">
+            <section class="chat__body">
+                <div class="messages">
+                    <div class="chat__loader">
+                        <div class="spinner"></div>
+                    </div>
+                    <div id="img-frm" class="message">
+                        <div class="message__image">
+                            <img id="prv-img" class="message__image__content" src="" />
                         </div>
-                        <div id="img-frm" class="message">
-                            <div class="message__image">
-                                <img id="prv-img" class="message__image__content" src="" />
-                            </div>
-                        </div>
-                        <div id="msg-frm" class="message">
-                            <div class="message__text">
-                                <div id="txt-cnt" class="message__text__content">
-                                    <div class="message__text"></div>
-                                    <div class="message__time"></div>
-                                </div>
+                    </div>
+                    <div id="msg-frm" class="message">
+                        <div class="message__text">
+                            <div id="txt-cnt" class="message__text__content">
+                                <div class="message__text"></div>
+                                <div class="message__time"></div>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-        </form>
-        <!-- <div class="config_frame">
-            <textarea id="configuration" autocomplete="off"></textarea>
-            <p class="options">
-                Options:
-                <label title="Generate node as collapsed">
-          <input type="checkbox" id="collapsed">Collapse nodes
-        </label>
-                <label title="Allow root element to be collasped">
-          <input type="checkbox" id="root-collapsable" checked>Root collapsable
-        </label>
-                <label title="Surround keys with quotes">
-          <input type="checkbox" id="with-quotes">Keys with quotes
-        </label>
-                <label title="Generate anchor tags for URL values">
-          <input type="checkbox" id="with-links" checked>
-          With Links
-        </label>
-            </p>
-            <button id="btn-json-viewer" title="run jsonViewer()">Transform to HTML</button>
-            <pre id="json-renderer"></pre>
-        </div> -->
+                </div>
+            </section>
+        </div>
     </div>
-    <div id="step2" class="step">
-        Lựa chọn Contact để gửi tin nhắn:
-    </div>
-    <div id="step3" class="step">
-        Nhập tin nhắn:
-        <div id="message"></div>
-    </div>
-    <div id="step4" class="step">
-        Thực hiện gửi tin nhắn ngay lập tức:
-    </div>
-
 </body>
 
 </html>
