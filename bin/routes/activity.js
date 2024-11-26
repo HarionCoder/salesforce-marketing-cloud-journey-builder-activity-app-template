@@ -46,10 +46,10 @@ function logData(req) {
 }
 
 /*
- * POST Handler for / route of Activity (this is the edit route).
+ * POST Handler for /edit/ route of Activity (this is the edit route).
  */
 exports.edit = function(req, res) {
-    // Data from the req and put it in an array accessible to the main app.
+    // Edit request
     logData(req);
     res.send(200, 'Edit');
 };
@@ -58,7 +58,7 @@ exports.edit = function(req, res) {
  * POST Handler for /save/ route of Activity.
  */
 exports.save = function(req, res) {
-    // Data from the req and put it in an array accessible to the main app.
+    // Save request
     logData(req);
     res.send(200, 'Save');
 };
@@ -67,7 +67,7 @@ exports.save = function(req, res) {
  * POST Handler for /publish/ route of Activity.
  */
 exports.publish = function(req, res) {
-    // Data from the req and put it in an array accessible to the main app.
+    // Public request
     logData(req);
     res.send(200, 'Publish');
 };
@@ -76,7 +76,16 @@ exports.publish = function(req, res) {
  * POST Handler for /validate/ route of Activity.
  */
 exports.validate = function(req, res) {
-    // Data from the req and put it in an array accessible to the main app.
+    // Validate request
+    logData(req);
+    res.send(200, 'Validate');
+};
+
+/*
+ * POST Handler for /stop/ route of Activity.
+ */
+exports.stop = async (req, res) => {
+    // Stop request
     logData(req);
     res.send(200, 'Validate');
 };
@@ -93,13 +102,18 @@ exports.execute = async (req, res) => {
     const url = `${endpoint}${token}/`;
 
     let contactKey = req.body.keyValue;
+    let inArguments = req.body.inArguments;
 
+    console.log('Contact Key: ------------------------------------------------------');
     console.log(contactKey);
+    console.log('InArguments: ------------------------------------------------------');
+    console.log(inArguments);
     // console.log(fln + ' Complete Request!')
 
     try {
-        if (fln) {
-            const response = await axios.get(`${url}sendMessage?chat_id=${contact}&text=${fln}`);
+        if (inArguments) {
+            const customMessage = inArguments[2]['customMessage'];
+            const response = await axios.get(`${url}sendMessage?chat_id=${contact}&text=${customMessage}`);
             console.log(response)
             // Process decode JWT
             // JWT(req.body, process.env.jwtSecret, (err, decoded) => {

@@ -40,6 +40,7 @@ app.post('/logout', routes.logout );
 
 // Custom Activity Routes
 app.post('/journeybuilder/save/', activity.save );
+app.post('/journeybuilder/stop/', activity.stop );
 app.post('/journeybuilder/validate/', activity.validate );
 app.post('/journeybuilder/publish/', activity.publish );
 app.post('/journeybuilder/execute/', activity.execute );
