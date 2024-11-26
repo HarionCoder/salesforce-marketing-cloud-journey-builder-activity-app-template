@@ -123,6 +123,7 @@ define(["postmonger"], function(Postmonger) {
         console.log("### End: Payload Data ------------------------------------------");
 
         let stored_message = '';
+        let stored_photo = '';
         let hasInArguments = Boolean(
             payload["arguments"] &&
             payload["arguments"].execute &&
@@ -144,8 +145,14 @@ define(["postmonger"], function(Postmonger) {
                 if (key === "telegramMessage") {
                     stored_message = val;
                 }
+                if (key === "imageURL") {
+                    stored_photo = val;
+                }
             });
         });
+
+        $("#msg-txt").val(stored_message);
+        $("#img-url").val(stored_photo);
 
         // // If there is no message selected, disable the next button
         if (stored_message == '{{Interaction.telegramMessage}}') {
@@ -162,7 +169,8 @@ define(["postmonger"], function(Postmonger) {
         connection.trigger("updateButton", {
             button: "next",
             text: "Save & Sent",
-            enabled: true,
+            enabled: false,
+            visible: false
         });
     }
 
@@ -228,8 +236,8 @@ define(["postmonger"], function(Postmonger) {
                 connection.trigger("updateButton", {
                     button: "next",
                     text: "Save & Send",
-                    visible: true,
-                    enabled: true, //Boolean(getContent()),
+                    visible: false,
+                    enabled: false, //Boolean(getContent()),
                 });
                 connection.trigger("updateButton", {
                     button: "back",
