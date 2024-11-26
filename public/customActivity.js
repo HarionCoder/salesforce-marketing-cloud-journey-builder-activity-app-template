@@ -157,15 +157,7 @@ define(["postmonger"], function(Postmonger) {
 
     //Save Sequence
     function onClickedNext() {
-        // var configuration = JSON.parse(
-        //   document.getElementById("configuration").value
-        // );
-        //var configuration = document.getElementById("configuration").value;
-
-        //connection.trigger("updateActivity", configuration);
-        //save(configuration);
-
-        if ((currentStep.key === "step2" && steps[2].active === false) || currentStep.key === "step3") {
+        if ((currentStep.key === "step1" && steps[2].active === false) || currentStep.key === "step3") {
             save();
         } else {
             connection.trigger("nextStep");
