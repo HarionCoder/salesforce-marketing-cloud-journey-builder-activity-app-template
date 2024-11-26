@@ -20,10 +20,12 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "Telegram": "{{InteractionDefaults.Telegram}}",
-                "FullName": "{{InteractionDefaults.FullName}}"
+                "Contact": "{{Contact.ContactKey}}",
+                "FullName": "{{Contact.Attribute.FullName}}"
             }],
-            "outArguments": [],
+            "outArguments": [
+
+            ],
             "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
             "verb": "POST",
             "body": "",
