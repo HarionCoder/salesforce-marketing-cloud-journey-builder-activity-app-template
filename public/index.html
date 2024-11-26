@@ -10,7 +10,6 @@
 
     <script type="text/javascript">
         (function() {
-            let end_point = "https://salesforce-marketing-cloud-journey.onrender.com/";
             var config = {
                 baseUrl: "",
             };
@@ -37,8 +36,27 @@
                 <input type="text" name="photo_url" id="img-url" class="content photo" required="" />
                 <label class="photo_label">Photo URL</label>
             </div>
-            <div class="btn-bar">
-                <input type="button" disabled="disabled" id="save-content" class="custom-cursor-on-hover" value="Save" />
+            <div id="preview-frame" class="hidden">
+                <section class="chat__body">
+                    <div class="messages">
+                        <div class="chat__loader">
+                            <div class="spinner"></div>
+                        </div>
+                        <div id="img-frm" class="message">
+                            <div class="message__image">
+                                <img id="prv-img" class="message__image__content" src="" />
+                            </div>
+                        </div>
+                        <div id="msg-frm" class="message">
+                            <div class="message__text">
+                                <div id="txt-cnt" class="message__text__content">
+                                    <div class="message__text"></div>
+                                    <div class="message__time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -50,31 +68,7 @@
     </div>
     <div id="step3" class="step">
         <h1>Preview content of Message</h1>
-        <div id="preview-frame">
-            <section class="chat__body">
-                <div class="messages">
-                    <div class="chat__loader">
-                        <div class="spinner"></div>
-                    </div>
-                    <div id="img-frm" class="message">
-                        <div class="message__image">
-                            <img id="prv-img" class="message__image__content" src="" />
-                        </div>
-                    </div>
-                    <div id="msg-frm" class="message">
-                        <div class="message__text">
-                            <div id="txt-cnt" class="message__text__content">
-                                <div class="message__text"></div>
-                                <div class="message__time"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-bar">
-                    <input type="button" disabled="disabled" id="send-request" class="custom-cursor-on-hover" value="Send Message" />
-                </div>
-            </section>
-        </div>
+
     </div>
 </body>
 

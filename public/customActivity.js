@@ -6,9 +6,9 @@ define(["postmonger"], function(Postmonger) {
     let lastStepEnabled = false;
     let steps = [
         // initialize to the same value as what's set in config.json for consistency
-        { label: "Soạn Thảo Nội Dung Tin Nhắn", key: "step1" },
-        { label: "Cấu Hình Người Nhận Tin Nhắn", key: "step2" },
-        { label: "Duyệt Tin Nhắn Và Gửi Telegram", key: "step3", active: false }
+        { "label": "Bước 1", "key": "step1" },
+        { "label": "Bước 2", "key": "step2" },
+        { "label": "Bước 3", "key": "step3" }
     ];
     let currentStep = steps[0];
 
@@ -46,18 +46,28 @@ define(["postmonger"], function(Postmonger) {
             $('#txt-cnt .message__time').html(current_time);
             const url = $("#img-url").val();
             $("#msg-frm .message__text").html(msg);
-            $("#save-content").removeAttr("disabled");
-            $("#send-request").removeAttr("disabled");
+            // $("#save-content").removeAttr("disabled");
+            // $("#send-request").removeAttr("disabled");
             if (url != '') {
                 $("#prv-img").attr('src', content.photo);
             } else {
                 $("#prv-img").attr('src', '');
             }
+            if ($("#preview-frame").is(':hidden')) {
+                $("#preview-frame").slideDown('slow', () => {
+                    $("#preview-frame").removeClass('hidden');
+                });
+            }
         } else {
+            if ($("#preview-frame").is(':visible')) {
+                $("#preview-frame").slideUp('fast', () => {
+                    $("#preview-frame").addClass('hidden');
+                });
+            }
             $("#msg-frm .message__text").html('');
             $("#prv-img").attr('src', '');
-            $("#save-content").attr("disabled", "disabled");
-            $("#send-request").attr("disabled", "disabled");
+            // $("#save-content").attr("disabled", "disabled");
+            // $("#send-request").attr("disabled", "disabled");
         }
     })
 
@@ -123,29 +133,31 @@ define(["postmonger"], function(Postmonger) {
         console.log(inArguments);
         console.log("### End: inArguments Data ------------------------------------------");
 
-        showStep(null, 1);
-        connection.trigger("updateButton", { button: "next", enabled: true });
-
-        // $.each(inArguments, function(index, inArgument) {
-        //     $.each(inArgument, function(key, val) {
-        //         if (key === "telegramMessage") {
-        //             parameters = val;
-        //         }
-        //     });
-        // });
+        $.each(inArguments, function(index, inArgument) {
+            $.each(inArgument, function(key, val) {
+                if (key === "telegramMessage") {
+                    stored_message = val;
+                }
+            });
+        });
 
         // If there is no message selected, disable the next button
-        // if (!parameters) {
-        //     console.log("~~~ Debug: No Parameter ------------------------------------------");
-        //     showStep(null, 1);
-        //     connection.trigger("updateButton", { button: "next", enabled: true });
-        //     // If there is a message, skip to the summary step
-        // } else {
-        //     console.log("*** Debug: Show Parameters ------------------------------------------");
-        //     console.log(parameters);
-        //     console.log("### End: Parameters Data ------------------------------------------");
-        //     showStep(null, 3);
-        // }
+        if (stored_message == '{{Interaction.telegramMessage}}') {
+            console.log("~~~ Debug: No Stored_message ------------------------------------------");
+            showStep(null, 1);
+            connection.trigger("updateButton", { button: "next", enabled: true });
+            // If there is a message, skip to the summary step
+            connection.trigger("updateButton", {
+                button: "next",
+                text: "Save & Sent",
+                visible: true,
+            });
+        } else {
+            console.log("*** Debug: Show Stored_message ------------------------------------------");
+            console.log(stored_message);
+            console.log("### End: Stored_message Data ------------------------------------------");
+            showStep(null, 3);
+        }
     }
 
     function onGetTokens(tokens) {
@@ -163,13 +175,16 @@ define(["postmonger"], function(Postmonger) {
         console.log("*** Debug: Click Next Step ------------------------------------------");
         console.log(currentStep);
         console.log("### End: Current Step Data ------------------------------------------");
-        if (currentStep.key === "step3") {
-            console.log("*** Debug: Next Step save data ------------------------------------------");
+        if (currentStep.key === "step1") {
             save();
-        } else {
-            console.log("*** Debug: Next Step move next ------------------------------------------");
-            connection.trigger("nextStep");
         }
+        // if (currentStep.key === "step3") {
+        //     console.log("*** Debug: Next Step save data ------------------------------------------");
+        //     save();
+        // } else {
+        //     console.log("*** Debug: Next Step move next ------------------------------------------");
+        //     connection.trigger("nextStep");
+        // }
     }
 
     function onClickedBack() {
