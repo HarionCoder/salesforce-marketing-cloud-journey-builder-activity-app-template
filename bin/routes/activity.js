@@ -94,8 +94,8 @@ exports.execute = async (req, res) => {
 
     let contactKey = req.body.keyValue;
 
-    console.log(req.body);
-    console.log(fln + ' Complete Request!')
+    console.log(contactKey);
+    // console.log(fln + ' Complete Request!')
 
     try {
         if (fln) {
