@@ -227,7 +227,7 @@ define(["postmonger"], function (Postmonger) {
       return $("#msg-txt").val();
     }
   
-    $("#submit-this").click(function (e) {
+    $("#send-request").click(function (e) {
       console.log("test this");
       save();
     });
