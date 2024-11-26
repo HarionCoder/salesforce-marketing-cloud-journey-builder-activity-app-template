@@ -7,8 +7,8 @@ define(["postmonger"], function(Postmonger) {
     let steps = [
         // initialize to the same value as what's set in config.json for consistency
         { label: "Soạn Thảo Nội Dung Tin Nhắn", key: "step1" },
-        { label: "Cấu Hình Đối Tượng Nhận Tin", key: "step2" },
-        { label: "Duyệt Tin Nhắn Và Gửi Đi Telegram", key: "step3", active: false }
+        { label: "Cấu Hình Người Nhận Tin Nhắn", key: "step2" },
+        { label: "Duyệt Tin Nhắn Và Gửi Telegram", key: "step3", active: false }
     ];
     let currentStep = steps[0].key;
 
@@ -157,7 +157,7 @@ define(["postmonger"], function(Postmonger) {
 
     //Save Sequence
     function onClickedNext() {
-        if ((currentStep.key === "step1" && steps[2].active === false) || currentStep.key === "step3") {
+        if (currentStep.key === "step3") {
             save();
         } else {
             connection.trigger("nextStep");
