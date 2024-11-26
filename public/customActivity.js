@@ -168,9 +168,8 @@ define(["postmonger"], function(Postmonger) {
         }
         connection.trigger("updateButton", {
             button: "next",
-            text: "Save & Sent",
-            enabled: false,
-            visible: false
+            text: "Save",
+            enabled: true
         });
     }
 
@@ -235,9 +234,8 @@ define(["postmonger"], function(Postmonger) {
                 $("#step1").show();
                 connection.trigger("updateButton", {
                     button: "next",
-                    text: "Save & Send",
-                    visible: false,
-                    enabled: false, //Boolean(getContent()),
+                    text: "Save",
+                    enabled: true, //Boolean(getContent()),
                 });
                 connection.trigger("updateButton", {
                     button: "back",
