@@ -11,7 +11,7 @@
         }
     },
     "metaData": {
-        "icon": "images/telegram-app.svg",
+        "icon": "images/telegram-icon.png",
         "iconSmall": "images/telegram-icon-small.png",
         "category": "message",
         "isConfigured": true
@@ -20,8 +20,8 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "Telegram": "@VCB_poc",
-                "FullName": "{{Contact.FullName}}"
+                "Telegram": "{{InteractionDefaults.Telegram}}",
+                "FullName": "{{InteractionDefaults.FullName}}"
             }],
             "outArguments": [],
             "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
@@ -74,23 +74,28 @@
         "arguments": {
             "execute": {
                 "inArguments": [{
-                    "contactKey": {
-                        "dataType": "FullName",
+                    "contactTelegramId": {
+                        "dataType": "Text",
                         "isNullable": false,
                         "direction": "in"
                     },
-                    "firstName": {
-                        "dataType": "Title",
-                        "isNullable": true,
+                    "fullName": {
+                        "dataType": "Text",
+                        "isNullable": false,
                         "direction": "in"
                     },
-                    "lastName": {
+                    "phoneNumber": {
                         "dataType": "Phone",
                         "isNullable": true,
                         "direction": "in"
                     },
-                    "customField": {
+                    "emailAddress": {
                         "dataType": "Email",
+                        "isNullable": true,
+                        "direction": "in"
+                    },
+                    "registerDate": {
+                        "dataType": "Date",
                         "isNullable": true,
                         "direction": "in"
                     }
