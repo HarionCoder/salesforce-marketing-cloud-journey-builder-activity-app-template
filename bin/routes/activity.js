@@ -92,7 +92,7 @@ exports.execute = async (req, res) => {
     const endpoint = 'https://api.telegram.org/bot';
     const url = `${endpoint}${token}/`;
 
-    const fln = req.body.ContactKey
+    let contactKey = req.body.keyValue;
 
     console.log(req.body);
     console.log(fln + ' Complete Request!')
