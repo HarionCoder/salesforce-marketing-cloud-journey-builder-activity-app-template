@@ -74,7 +74,7 @@ define(["postmonger"], function (Postmonger) {
         //connection.trigger("updateButton", { button: "next", enabled: false });
         // If there is a message, skip to the summary step
       } else {
-        document.getElementById("configuration").value = message;
+        $("#msg-txt").val(message);
         $("#message").html(message);
         //showStep(null, 3);
       }
