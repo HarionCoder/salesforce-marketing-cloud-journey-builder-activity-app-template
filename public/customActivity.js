@@ -49,7 +49,7 @@ define(["postmonger"], function(Postmonger) {
             // $("#save-content").removeAttr("disabled");
             // $("#send-request").removeAttr("disabled");
             if (url != '') {
-                $("#prv-img").attr('src', content.photo);
+                $("#prv-img").attr('src', url);
             } else {
                 $("#prv-img").attr('src', '');
             }
@@ -169,7 +169,7 @@ define(["postmonger"], function(Postmonger) {
         connection.trigger("updateButton", {
             button: "next",
             text: "Save",
-            enabled: true
+            visible: true
         });
     }
 
@@ -235,7 +235,7 @@ define(["postmonger"], function(Postmonger) {
                 connection.trigger("updateButton", {
                     button: "next",
                     text: "Save",
-                    enabled: true, //Boolean(getContent()),
+                    visible: true, //Boolean(getContent()),
                 });
                 connection.trigger("updateButton", {
                     button: "back",
