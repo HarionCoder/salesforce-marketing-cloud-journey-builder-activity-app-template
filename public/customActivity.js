@@ -32,7 +32,28 @@ define(["postmonger"], function(Postmonger) {
 
         const content = getContent();
         $("#msg-frm .message__text").html(content.message);
-        $("#prv-img").setAttr('src', content.photo);
+        $("#prv-img").attr('src', content.photo);
+
+        $("#save-content").click(() => { save(); });
+        $("#msg-txt").on('mouseover', () => {
+            const msg = $("#msg-txt").val();
+            if (msg != '') {
+                const url = $("#img-url").val();
+                $("#msg-frm .message__text").html(msg);
+                $("#save-content").removeAttr("disabled");
+                $("#send-request").removeAttr("disabled");
+                if (url != '') {
+                    $("#prv-img").attr('src', content.photo);
+                } else {
+                    $("#prv-img").attr('src', '');
+                }
+            } else {
+                $("#msg-frm .message__text").html('');
+                $("#prv-img").attr('src', '');
+                $("#save-content").attr("disabled", "disabled");
+                $("#send-request").attr("disabled", "disabled");
+            }
+        })
     }
 
     function initialize(data) {
