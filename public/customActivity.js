@@ -10,7 +10,7 @@ define(["postmonger"], function(Postmonger) {
         { label: "Cấu Hình Người Nhận Tin Nhắn", key: "step2" },
         { label: "Duyệt Tin Nhắn Và Gửi Telegram", key: "step3", active: false }
     ];
-    let currentStep = steps[0].key;
+    let currentStep = steps[0];
 
     //Startup Sequence
     $(window).ready(onRender);
@@ -192,6 +192,11 @@ define(["postmonger"], function(Postmonger) {
         currentStep = step;
 
         $(".step").hide();
+
+        console.log("*** Debug: On Show Step ------------------------------------------");
+        console.log(stepIndex);
+        console.log(currentStep);
+        console.log("### End: Show Step ------------------------------------------");
 
         switch (currentStep.key) {
             case "step1":
