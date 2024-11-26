@@ -65,6 +65,11 @@ define(["postmonger"], function(Postmonger) {
         let inArguments = hasInArguments ?
             payload["arguments"].execute.inArguments : {};
 
+        console.log('-------- View inArguments --------');
+        console.log(inArguments)
+        console.log('------------- End View -------------');
+        console.log(JSON.Stringify(inArguments));
+
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
                 if (key === "message") {
