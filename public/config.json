@@ -20,8 +20,14 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "Contact": "{{Contact.ContactKey}}"
-            }],
+                "customMessage": "{{Interaction.customMessage}}"
+              },
+              {
+                "emailAddress": "{{InteractionDefaults.Email}}"
+              },
+              {
+                "phoneNumber": "{{Contact.Default.PhoneNumber}}"
+              }],
             "outArguments": [
 
             ],

@@ -47,22 +47,22 @@ define(["postmonger"], function (Postmonger) {
         payload = data;
       }
   
-      var message;
-      var hasInArguments = Boolean(
+      let message = '';
+      let hasInArguments = Boolean(
         payload["arguments"] &&
-          payload["arguments"].execute &&
-          payload["arguments"].execute.inArguments &&
-          payload["arguments"].execute.inArguments.length > 0
+        payload["arguments"].execute &&
+        payload["arguments"].execute.inArguments &&
+        payload["arguments"].execute.inArguments.length > 0
       );
   
-      var inArguments = hasInArguments
+      let inArguments = hasInArguments
         ? payload["arguments"].execute.inArguments
         : {};
   
       $.each(inArguments, function (index, inArgument) {
         $.each(inArgument, function (key, val) {
           if (key === "message") {
-            message = val;
+            // message = val;
           }
         });
       });
