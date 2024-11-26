@@ -165,7 +165,15 @@ define(["postmonger"], function(Postmonger) {
             save();
         } else {
             console.log("*** Debug: Next Step move next ------------------------------------------");
+            console.log(currentStep);
+            console.log("*** Debug: Show Next Step ------------------------------------------");
             connection.trigger("nextStep");
+            $(".step").hide();
+            if (currentStep.key == "step1") {
+                showStep(null, 2);
+            } else if (currentStep.key == "step2") {
+                showStep(null, 3);
+            }
         }
     }
 
@@ -174,6 +182,12 @@ define(["postmonger"], function(Postmonger) {
         console.log(currentStep);
         console.log("### End: Current Step Data ------------------------------------------");
         connection.trigger("prevStep");
+        $(".step").hide();
+        if (currentStep.key == "step2") {
+            showStep(null, 1);
+        } else if (currentStep.key == "step3") {
+            showStep(null, 2);
+        }
     }
 
     function onGotoStep(step) {
