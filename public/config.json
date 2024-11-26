@@ -11,7 +11,7 @@
         }
     },
     "metaData": {
-        "icon": "images/telegram-icon.png",
+        "icon": "images/telegram-app.svg",
         "iconSmall": "images/telegram-icon-small.png",
         "category": "message",
         "isConfigured": true
@@ -20,11 +20,11 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "chat_id": "@VCB_poc",
-                "text": "VCB xin kính chúc quý khách hàng một ngày làm việc vui vẻ!"
+                "Telegram": "@VCB_poc",
+                "FullName": "{{Contact.FullName}}"
             }],
             "outArguments": [],
-            "url": "https://api.telegram.org/bot8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo/sendMessage",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
             "verb": "POST",
             "body": "",
             "header": "",

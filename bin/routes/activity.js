@@ -84,7 +84,7 @@ exports.validate = function(req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function(req, res) {
+exports.execute = async (req, res) => {
 
     let channel = '@VCB_poc';
     let contact = '632717898';
@@ -92,29 +92,37 @@ exports.execute = function(req, res) {
     const endpoint = 'https://api.telegram.org/bot';
     const url = `${endpoint}${token}/`;
 
+    const fln = req.body.FullName
+
+    console.log(req.body);
+    console.log(fln + ' Complete Request!')
+
     try {
-        const response = axios.get(`${url}sendMessage?chat_id=${channel}&text=`);
+        if (fln) {
+            const response = await axios.get(`${url}sendMessage?chat_id=${contact}&text=${fln}`);
+            console.log(response)
+            // Process decode JWT
+            // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
-        // Process decode JWT
-        // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+            //     // verification error -> unauthorized request
+            //     if (err) {
+            //         console.error(err);
+            //         return res.status(401).end();
+            //     }
 
-        //     // verification error -> unauthorized request
-        //     if (err) {
-        //         console.error(err);
-        //         return res.status(401).end();
-        //     }
-
-        //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-        //         // decoded in arguments
-        //         var decodedArgs = decoded.inArguments[0];
-        //         logData(req);
-        //         res.send(200, 'Execute');
-        //     } else {
-        //         console.error('inArguments invalid.');
-        //         return res.status(400).end();
-        //     }
-        // });
-        res.send(response.data);
+            //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+            //         // decoded in arguments
+            //         var decodedArgs = decoded.inArguments[0];
+            //         logData(req);
+            //         res.send(200, 'Execute');
+            //     } else {
+            //         console.error('inArguments invalid.');
+            //         return res.status(400).end();
+            //     }
+            // });
+            // res.send(response.data);
+            res.send('Complete Request!');
+        }
     } catch (error) {
         console.error("Error triggering API call:", error);
         res.status(500).send("Error triggering API call");
