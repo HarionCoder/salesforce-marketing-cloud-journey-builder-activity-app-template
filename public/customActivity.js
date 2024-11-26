@@ -46,21 +46,23 @@ define(["postmonger"], function(Postmonger) {
 
     function initialize(data) {
 
-        console.log('-------- triggered:onInitActivity({obj}) --------');
+        console.log('-------- Telegram Activity is triggered ({data}) --------');
         console.log(data)
+        console.log('---------------------- End Log Data ----------------------');
+
         if (data) {
             payload = data;
         }
 
-        var message;
-        var hasInArguments = Boolean(
+        let message;
+        let hasInArguments = Boolean(
             payload["arguments"] &&
             payload["arguments"].execute &&
             payload["arguments"].execute.inArguments &&
             payload["arguments"].execute.inArguments.length > 0
         );
 
-        var inArguments = hasInArguments ?
+        let inArguments = hasInArguments ?
             payload["arguments"].execute.inArguments : {};
 
         $.each(inArguments, function(index, inArgument) {
@@ -71,19 +73,19 @@ define(["postmonger"], function(Postmonger) {
             });
         });
 
-
+        console.log('-------- View message data --------');
+        console.log(message)
+        console.log('------------- End View -------------');
 
         // If there is no message selected, disable the next button
         if (!message) {
             showStep(null, 1);
             connection.trigger("updateButton", { button: "next", enabled: true });
-            //connection.trigger("updateButton", { button: "next", enabled: false });
             // If there is a message, skip to the summary step
         } else {
-
             $("#msg-txt").val(message);
             $("#message").html(message);
-            //showStep(null, 3);
+            showStep(null, 3);
         }
     }
 
