@@ -38,7 +38,7 @@ define(["postmonger"], function(Postmonger) {
 
     $("#save-content").click(() => { save(); });
 
-    $("#msg-txt").on('mouseout', (e) => {
+    const showContent = () => {
         const msg = $("#msg-txt").val();
         if (msg != '') {
             const now = new Date(Date.now());
@@ -69,6 +69,10 @@ define(["postmonger"], function(Postmonger) {
             // $("#save-content").attr("disabled", "disabled");
             // $("#send-request").attr("disabled", "disabled");
         }
+    }
+
+    $("#msg-txt").on('mouseout', (e) => {
+        showContent();
     })
 
     const call = (data) => {
@@ -135,31 +139,31 @@ define(["postmonger"], function(Postmonger) {
 
         showStep(null, 1);
 
-        // $.each(inArguments, function(index, inArgument) {
-        //     $.each(inArgument, function(key, val) {
-        //         if (key === "telegramMessage") {
-        //             stored_message = val;
-        //         }
-        //     });
-        // });
+        $.each(inArguments, function(index, inArgument) {
+            $.each(inArgument, function(key, val) {
+                if (key === "telegramMessage") {
+                    stored_message = val;
+                }
+            });
+        });
 
         // // If there is no message selected, disable the next button
-        // if (stored_message == '{{Interaction.telegramMessage}}') {
-        //     console.log("~~~ Debug: No Stored_message ------------------------------------------");
-        //     showStep(null, 1);
-        //     connection.trigger("updateButton", { button: "next", enabled: true });
-        //     // If there is a message, skip to the summary step
-        //     connection.trigger("updateButton", {
-        //         button: "next",
-        //         text: "Save & Sent",
-        //         visible: true,
-        //     });
-        // } else {
-        //     console.log("*** Debug: Show Stored_message ------------------------------------------");
-        //     console.log(stored_message);
-        //     console.log("### End: Stored_message Data ------------------------------------------");
-        //     showStep(null, 3);
-        // }
+        if (stored_message == '{{Interaction.telegramMessage}}') {
+            console.log("~~~ Debug: No Stored_message ------------------------------------------");
+            // connection.trigger("updateButton", { button: "next", enabled: true });
+            // If there is a message, skip to the summary step
+        } else {
+            showContent();
+            console.log("*** Debug: Show Stored_message ------------------------------------------");
+            console.log(stored_message);
+            console.log("### End: Stored_message Data ------------------------------------------");
+            // showStep(null, 3);
+        }
+        connection.trigger("updateButton", {
+            button: "next",
+            text: "Save & Sent",
+            enabled: true,
+        });
     }
 
     function onGetTokens(tokens) {
