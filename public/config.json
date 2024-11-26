@@ -29,7 +29,7 @@
                     "emailAddress": "{{InteractionDefaults.Email}}"
                 },
                 {
-                    "telegramId": "{{Contact.Default.TelegramId}}"
+                    "telegramId": "{{Contact.Default.telegramId}}"
                 },
                 {
                     "telegramChannel": "{{Contact.Default.telegramChannel}}"
@@ -38,7 +38,7 @@
             "outArguments": [
 
             ],
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/execute",
             "verb": "POST",
             "useJwt": false,
             "timeout": 10000
@@ -46,22 +46,22 @@
     },
     "configurationArguments": {
         "save": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/save",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/save",
             "verb": "POST",
             "useJwt": false
         },
         "publish": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/publish",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/publish",
             "verb": "POST",
             "useJwt": false
         },
         "stop": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/stop",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/stop",
             "verb": "POST",
             "useJwt": false
         },
         "validate": {
-            "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/validate",
+            "url": "https://salesforce-marketing-cloud-journey.onrender.com/journeybuilder/validate",
             "verb": "POST",
             "useJwt": false
         }
