@@ -1,13 +1,13 @@
 define(["postmonger"], function(Postmonger) {
     "use strict";
 
-    let channel = '@VCB_poc';
-    let contact = '632717898';
-    const token = '8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo';
-    const endpoint = 'https://api.telegram.org/bot';
-    const url = `${endpoint}${token}/`;
+    // let channel = '@VCB_poc';
+    // let contact = '632717898';
+    // const token = '8091993565:AAE_BFhW4GU3e1702RlwdUTycr_DL1gOhBo';
+    // const endpoint = 'https://api.telegram.org/bot';
+    // const url = `${endpoint}${token}/`;
 
-    let content = { 'message': '', 'photo': '' };
+    // let content = { 'message': '', 'photo': '' };
 
     var connection = new Postmonger.Session();
     var payload = {};
@@ -47,6 +47,7 @@ define(["postmonger"], function(Postmonger) {
     function initialize(data) {
 
         console.log('-------- triggered:onInitActivity({obj}) --------');
+        console.log(data)
         if (data) {
             payload = data;
         }

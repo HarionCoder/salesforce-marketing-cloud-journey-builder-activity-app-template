@@ -20,17 +20,13 @@
     "arguments": {
         "execute": {
             "inArguments": [{
-                "Contact": "{{Contact.ContactKey}}",
-                "FullName": "{{Contact.Attribute.FullName}}"
+                "Contact": "{{Contact.ContactKey}}"
             }],
             "outArguments": [
 
             ],
             "url": "https://salesforce-marketing-cloud-journey.onrender.com/api/execute",
             "verb": "POST",
-            "body": "",
-            "header": "",
-            "format": "json",
             "useJwt": false,
             "timeout": 10000
         }
@@ -86,7 +82,7 @@
                         "isNullable": false,
                         "direction": "in"
                     },
-                    "phoneNumber": {
+                    "code": {
                         "dataType": "Phone",
                         "isNullable": true,
                         "direction": "in"
