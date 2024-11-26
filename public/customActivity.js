@@ -103,7 +103,7 @@ define(["postmonger"], function(Postmonger) {
         if (data) {
             payload = data;
         }
-
+        payload.name = 'Telegram Activity';
         console.log("*** View: Payload Data ------------------------------------------");
         console.log(payload);
         console.log("### End: Payload Data ------------------------------------------");
@@ -125,7 +125,7 @@ define(["postmonger"], function(Postmonger) {
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if (key === "parameter") {
+                if (key === "telegramMessage") {
                     parameters = val;
                 }
             });
@@ -237,9 +237,7 @@ define(["postmonger"], function(Postmonger) {
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
         // may be overridden as desired.
-        payload.name = 'Telegram Activity'; //text message to send to telegram
-        payload["arguments"].execute.inArguments = [{ parameter: content }];
-        //payload["arguments"].execute.inArguments.push({"text": value})
+        payload.name = 'Telegram Activity already set content'; //text message to send to telegram
 
         payload["arguments"].execute.inArguments = [{
                 'telegramChannel': "@VCB_poc"
