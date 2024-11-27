@@ -4,10 +4,6 @@
         "en-US": {
             "name": "VCB Telegram",
             "description": "Salesforce Marketing Cloud - Journey Builder Telegram custom activity."
-        },
-        "vi-VN": {
-            "name": "Telegram VCB",
-            "description": "Salesforce Marketing Cloud - Journey Builder ứng dụng tương tác với Telegram."
         }
     },
     "metaData": {

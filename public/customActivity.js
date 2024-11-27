@@ -280,19 +280,28 @@ define(["postmonger"], function(Postmonger) {
         payload.name = 'Telegram Activity already set content'; //text message to send to telegram
 
         payload["arguments"].execute.inArguments = [{
-                'telegramChannel': "@VCB_poc"
+                telegramChannel: "@VCB_poc"
             },
             {
-                'emailAddress': '{{InteractionDefaults.Email}}'
+                emailAddress: '{{InteractionDefaults.Email}}'
             },
             {
-                'telegramId': '{{InteractionDefaults.TelegramId}}'
+                telegramId: '{{InteractionDefaults.TelegramId}}'
             },
             {
-                'telegramMessage': message
+                telegramMessage: message
             },
             {
-                'imageURL': photo
+                imageURL: photo
+            },
+            {
+                registeredDate: '{{InteractionDefaults.RegisteredDate}}'
+            },
+            {
+                fullName: '{{InteractionDefaults.FullName}}'
+            },
+            {
+                telegramChannel: "@VCB_bot"
             }
         ];
 
